@@ -159,5 +159,8 @@ RUN curl -sL https://releases.rancher.com/dapper/latest/dapper-`uname -s`-`uname
 RUN cd ${DOWNLOADS} && \
     curl -pfL ${!OS_BASE_URL} | tar xvJf -
 
+# Download ZFS
+RUN mkdir /tmp/os-zfs && curl -sfL http://35.203.23.239/os-zfs/os-zfs-4.14.85-rancher-0.7.12.tar.gz | tar xzf - -C /tmp/os-zfs/
+
 ENTRYPOINT ["./scripts/entry"]
 CMD ["ci"]
